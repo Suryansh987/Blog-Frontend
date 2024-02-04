@@ -16,7 +16,7 @@ const Navbar = (props) => {
           <li><span className="material-symbols-outlined sm:hidden block">menu</span>About</li>
           <li><span className="material-symbols-outlined sm:hidden block">menu</span>Contact</li>
         </ul>
-        <div className={`p-5 w-10 h-10 bg-[url("${Avatar}")] bg-contain bg-no-repeat rounded-full`}>
+        <div className={`p-5 w-10 h-10 bg-[url("${Avatar}")] bg-black bg-contain bg-no-repeat rounded-full`}>
         </div>
         <span className="material-symbols-outlined sm:hidden block select-none" onClick={()=>{setMenuType(MenuType==="Menu"?"Sort":"Menu")}}>
           {MenuType}

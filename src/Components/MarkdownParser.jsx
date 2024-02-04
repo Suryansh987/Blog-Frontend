@@ -1,7 +1,7 @@
 import React from 'react'
 import Markdown from 'react-markdown'
 
-const ReactMarkdownParser = (props) => {
+const MarkdownParser = (props) => {
     const {markdownValue} = props
   return (
     <div>
@@ -28,4 +28,4 @@ const ReactMarkdownParser = (props) => {
   )
 }
 
-export default ReactMarkdownParser
+export default MarkdownParser
