@@ -1,4 +1,4 @@
-import React,{StrictMode} from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
@@ -7,9 +7,9 @@ import Blog from './Blog.jsx'
 import { Provider } from 'react-redux'
 import { store } from './App/Store.js'
 import AuthLayout from './Auth/AuthLayout.jsx'
-import Home from './Components/Home'
-import Login from './Components/Login'
-import Signin from './Components/Signin'
+import Home from './Components/Home.jsx'
+import Login from './Components/Login.jsx'
+import Signin from './Components/Signin.jsx'
 
 const router = createBrowserRouter([
   {
@@ -21,13 +21,13 @@ const router = createBrowserRouter([
         element : <Home/>
       },
       {
-        path: "blog",
+        path: "/blog",
         element: (<AuthLayout authentication={true}>
           <Blog />
         </AuthLayout>)
       },
       {
-        path: "login",
+        path: "/login",
         element: (<AuthLayout authentication={false}>
           <Login />
         </AuthLayout>)
@@ -42,10 +42,10 @@ const router = createBrowserRouter([
   }
 ])
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <StrictMode>
+
   <Provider store={store}>
     <RouterProvider router={router} />
   </Provider>
-  </StrictMode>
 )
