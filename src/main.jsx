@@ -1,15 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Blog from './Blog.jsx'
 import { Provider } from 'react-redux'
 import { store } from './App/Store.js'
+import './index.css'
+
+
+import App from './App'
 import AuthLayout from './Auth/AuthLayout.jsx'
 import Home from './Components/Home.jsx'
 import Login from './Components/Login.jsx'
 import Signin from './Components/Signin.jsx'
+import Blog from './Components/Blog.jsx'
+
+
 
 const router = createBrowserRouter([
   {

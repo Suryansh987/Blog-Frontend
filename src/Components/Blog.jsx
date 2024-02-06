@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MarkdownParser from './Components/MarkdownParser'
+import MarkdownParser from './MarkdownParser'
 const Blog = () => {
     const [MarkdownText, setMarkdownText] = useState(`Type Here`)
 
