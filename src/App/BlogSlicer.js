@@ -9,17 +9,17 @@ const BlogSlicer = createSlice({
     initialState,
     reducers: {
         fetch : (state, action) => {
-            
+            state.Blogs = {"fetch":"fetched"}
         },
-        signin : (state,action) => {
-            logged = true
+        create : (state,action) => {
+            state.Blogs = {"Create":"Created"}
         },
-        logout : (state,action) => {
-            logged = false
+        remove : (state,action) => {
+            state.Blogs = {"remove":"removed"}
         }
     }
 })
 
-export const { login , signin, logout } = AuthSlicer.actions
+export const { fetch , create , remove } = BlogSlicer.actions
 
 export default BlogSlicer.reducer

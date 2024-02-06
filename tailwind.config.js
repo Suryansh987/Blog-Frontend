@@ -8,11 +8,11 @@ export default {
     backgroundImage : {
       'default-image' : "url('https://res.cloudinary.com/dybwlpu9u/image/upload/v1706519441/Avatar/h2w4cdnhxo5opzpnyydq.png')"
     },
-    colors : {
-      "body-color" : "#F4F3E8",
-      "text-color" : "#24582A"
-    },
     extend : {
+      colors : {
+        "body-color" : "#F4F3E8",
+        "text-color" : "#24582A"
+      },
       fontFamily : {
         "Marmelad" : "marmelad"
       }

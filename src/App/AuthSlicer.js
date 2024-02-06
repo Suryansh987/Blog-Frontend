@@ -9,13 +9,13 @@ const AuthSlicer = createSlice({
     initialState,
     reducers: {
         login : (state, action) => {
-            logged = true
+            state.logged = true
         },
         signin : (state,action) => {
-            logged = true
+            state.logged = true
         },
         logout : (state,action) => {
-            logged = false
+            state.logged = false
         }
     }
 })

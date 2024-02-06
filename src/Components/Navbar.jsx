@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../index.css'
+import Drawer from './Drawer'
 
 const Navbar = (props) => {
   const [MenuType, setMenuType] = useState("Menu")
@@ -14,7 +15,7 @@ const Navbar = (props) => {
           </g>
         </svg>
         <span className='hue-rotate-90'></span>
-        <span className='font-[Sixtyfour] mt-2 text-text-color text-4xl'>TechyBlogs</span></div>
+        <span className='font-[Sixtyfour] mt-2 text-text-color sm:text-4xl text-xl'>TechyBlogs</span></div>
       <nav className='flex w-[98vw] h-[55px] justify-between items-center text-xl px-8 select-none'>
         <ul className='sm:flex gap-10 hidden items-center font-Marmelad cursor-pointer'>
           <li className='flex items-center text-text-color'><span className="material-symbols-outlined mr-2 text-text-color">Home</span>Home</li>
@@ -28,7 +29,8 @@ const Navbar = (props) => {
           {MenuType}
         </span>
       </nav>
-      <div className='w-[97vw] h-[1px] bg-[#24582a] mx-4 mt-5'></div>
+      <div className='sm:w-[97vw] w-[91vw] h-[1px] bg-[#24582a] m-auto mt-5'></div>
+      <Drawer menu={MenuType}/>
     </>
 
   )

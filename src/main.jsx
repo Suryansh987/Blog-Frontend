@@ -6,12 +6,16 @@ import { store } from './App/Store.js'
 import './index.css'
 
 
-import App from './App'
+import App from './App.jsx'
 import AuthLayout from './Auth/AuthLayout.jsx'
-import Home from './Components/Home.jsx'
-import Login from './Components/Login.jsx'
-import Signin from './Components/Signin.jsx'
-import Blog from './Components/Blog.jsx'
+import Home from './Components//Home/Home.jsx'
+import Blog from './Components/Blog/Blog.jsx'
+import Signin from './Components/UserAuth/Signin.jsx'
+import Login from './Components/UserAuth/Login.jsx'
+
+
+
+
 
 
 
