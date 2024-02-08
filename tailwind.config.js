@@ -11,12 +11,15 @@ export default {
     extend : {
       colors : {
         "body-color" : "#F4F3E8",
-        "text-color" : "#24582A"
+        "text-color" : "#24582A",
+        "card" : "#d0e4cb"
       },
       fontFamily : {
         "Marmelad" : "marmelad"
       }
     }
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')
+  ],
 }
