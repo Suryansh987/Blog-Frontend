@@ -1,6 +1,7 @@
 import React from 'react'
 import HomeBlog from './HomeBlog'
 import About from './About'
+import Contact from './Contact'
 
 const Home = () => {
   return (
@@ -11,7 +12,8 @@ const Home = () => {
       <div className='bg-[url("/First.jpg")] w-[80vw] lg:h-[80vh] md:h-[60vh] sm:h-[40vh] min-[350px]:h-[30vh] h-[17vh] bg-contain bg-center bg-no-repeat '></div>
     </div>
     <HomeBlog/>
-    {/* <About/> */}
+    <About/>
+    <Contact/>
     </>
   )
 }
