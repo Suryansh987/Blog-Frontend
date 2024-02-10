@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../index.css'
 import Drawer from './Drawer'
+import { Link } from 'react-router-dom'
 
 const Navbar = (props) => {
   const [MenuType, setMenuType] = useState("Menu")
@@ -18,10 +19,10 @@ const Navbar = (props) => {
         <span className='font-[Sixtyfour] mt-2 text-text-color sm:text-4xl text-xl'>TechyBlogs</span></div>
       <nav className='flex w-[98vw] h-[55px] justify-between items-center text-xl px-8 select-none'>
         <ul className='sm:flex gap-10 hidden items-center font-Marmelad cursor-pointer'>
-          <li className='flex items-center text-text-color'><span className="material-symbols-outlined mr-2 text-text-color">Home</span>Home</li>
-          <li className='flex items-center text-text-color'><span className="material-symbols-outlined mr-2 text-text-color">history_edu</span>My Blogs</li>
-          <li className='flex items-center text-text-color'><span className="material-symbols-outlined mr-2 text-text-color">diversity_3</span>About</li>
-          <li className='flex items-center text-text-color'><span className="material-symbols-outlined mr-2 text-text-color">contact_support</span>Contact</li>
+          <Link className='flex items-center text-text-color' to="/"><span className="material-symbols-outlined mr-2 text-text-color">Home</span>Home</Link>
+          <Link className='flex items-center text-text-color' to="/blog"><span className="material-symbols-outlined mr-2 text-text-color">history_edu</span>My Blogs</Link>
+          <Link className='flex items-center text-text-color' to="/"><span className="material-symbols-outlined mr-2 text-text-color">diversity_3</span>About</Link>
+          <Link className='flex items-center text-text-color' to="/"><span className="material-symbols-outlined mr-2 text-text-color">contact_support</span>Contact</Link>
         </ul>
         <div style={{ backgroundImage: `url(${Avatar})`}} className="p-5 w-10 h-10 bg-contain bg-no-repeat rounded-full cursor-pointer">
         </div>

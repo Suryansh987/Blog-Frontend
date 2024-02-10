@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
 
 const HomeBlog = () => {
-  const selector = useSelector(state=>state.blog.Blogs.slice(0,4))
+  const selectorValues = useSelector(state=>state.blog.Blogs)
+  const selector = selectorValues.slice(0,4)
   return (
     <>
     <div className='md:text-7xl text-4xl font-Marmelad text-text-color w-[80vw] m-auto my-8'>Blogs</div>
