@@ -11,7 +11,7 @@ const BlogBox = (props) => {
                         <p className='flex-wrap text-ellipsis line-clamp-[11] px-4'>{description}</p>
                     </div>
                 </div>
-                <div className='flex justify-around items-center py-4'>
+                <div className='flex sm:justify-around justify-center items-center py-4 sm:gap-0 gap-2'>
                     <span className='font-mono italic cursor-pointer hover:underline text-ellipsis overflow-hidden w-[40%]'>{user}</span>
                     <span className="material-symbols-outlined text-text-color cursor-pointer">Comment</span>
                     <span className="material-symbols-outlined text-pink-500 text cursor-pointer">Favorite</span>
