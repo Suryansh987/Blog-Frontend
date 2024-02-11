@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import '../index.css'
 import Drawer from './Drawer'
 import { Link } from 'react-router-dom'
+import AvatarOptions from './AvatarOptions'
 
 const Navbar = (props) => {
   const [MenuType, setMenuType] = useState("Menu")
+ const [isOpen, setisOpen] = useState(false)
   const { Avatar } = props
   return (
     <>
@@ -24,7 +26,8 @@ const Navbar = (props) => {
           <Link className='flex items-center text-text-color' to="/"><span className="material-symbols-outlined mr-2 text-text-color">diversity_3</span>About</Link>
           <Link className='flex items-center text-text-color' to="/"><span className="material-symbols-outlined mr-2 text-text-color">contact_support</span>Contact</Link>
         </ul>
-        <div style={{ backgroundImage: `url(${Avatar})`}} className="p-5 w-10 h-10 bg-contain bg-no-repeat rounded-full cursor-pointer">
+        <div style={{ backgroundImage: `url(${Avatar})`}} className="p-5 w-10 h-10 bg-contain bg-no-repeat rounded-full cursor-pointer" onClick={()=>(setisOpen(isOpen?false:true))}>
+          <AvatarOptions isOpen={isOpen}/>
         </div>
         <span className="material-symbols-outlined sm:hidden block select-none" onClick={() => { setMenuType(MenuType === "Menu" ? "Sort" : "Menu") }}>
           {MenuType}

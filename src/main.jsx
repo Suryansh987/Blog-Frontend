@@ -12,6 +12,7 @@ import Home from './Components//Home/Home.jsx'
 import Blog from './Components/Blog/Blog.jsx'
 import Signin from './Components/UserAuth/Signin.jsx'
 import Login from './Components/UserAuth/Login.jsx'
+import UserBlogs from './Components/UserBlogs/UserBlogs.jsx'
 
 
 
@@ -33,6 +34,13 @@ const router = createBrowserRouter([
         element: (<AuthLayout authentication={true}>
           <Blog />
         </AuthLayout>)
+      },
+      {
+        path : '/userblogs',
+        element : (<AuthLayout authentication={true}>
+          <UserBlogs />
+        </AuthLayout>
+        )
       },
       {
         path: "/login",
