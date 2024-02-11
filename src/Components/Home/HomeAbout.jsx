@@ -1,6 +1,6 @@
 import React from 'react'
 
-const About = () => {
+const HomeAbout = () => {
   return (
     <>
     <div className='flex justify-between text-text-color w-[80vw] m-auto mt-32 mb-16'>
@@ -21,4 +21,4 @@ const About = () => {
   )
 }
 
-export default About
+export default HomeAbout

@@ -22,11 +22,11 @@ const Navbar = (props) => {
       <nav className='flex w-[98vw] h-[55px] justify-between items-center text-xl px-8 select-none'>
         <ul className='sm:flex gap-10 hidden items-center font-Marmelad cursor-pointer'>
           <Link className='flex items-center text-text-color' to="/"><span className="material-symbols-outlined mr-2 text-text-color">Home</span>Home</Link>
-          <Link className='flex items-center text-text-color' to="/blog"><span className="material-symbols-outlined mr-2 text-text-color">history_edu</span>My Blogs</Link>
-          <Link className='flex items-center text-text-color' to="/"><span className="material-symbols-outlined mr-2 text-text-color">diversity_3</span>About</Link>
-          <Link className='flex items-center text-text-color' to="/"><span className="material-symbols-outlined mr-2 text-text-color">contact_support</span>Contact</Link>
+          <Link className='flex items-center text-text-color' to="/blog"><span className="material-symbols-outlined mr-2 text-text-color">post_add</span>Post</Link>
+          <Link className='flex items-center text-text-color' to="/userblog"><span className="material-symbols-outlined mr-2 text-text-color">history_edu</span>Blogs</Link>
+          <Link className='flex items-center text-text-color' to="/about"><span className="material-symbols-outlined mr-2 text-text-color">diversity_3</span>About</Link>
         </ul>
-        <div style={{ backgroundImage: `url(${Avatar})`}} className="p-5 w-10 h-10 bg-contain bg-no-repeat rounded-full cursor-pointer" onClick={()=>(setisOpen(isOpen?false:true))}>
+        <div style={{ backgroundImage: `url(${Avatar})`}} className="p-5 w-10 h-10 bg-contain bg-no-repeat rounded-full cursor-pointer" id='avatar' onClick={()=>(setisOpen(isOpen?false:true))}>
           <AvatarOptions isOpen={isOpen}/>
         </div>
         <span className="material-symbols-outlined sm:hidden block select-none" onClick={() => { setMenuType(MenuType === "Menu" ? "Sort" : "Menu") }}>

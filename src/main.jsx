@@ -13,7 +13,7 @@ import Blog from './Components/Blog/Blog.jsx'
 import Signin from './Components/UserAuth/Signin.jsx'
 import Login from './Components/UserAuth/Login.jsx'
 import UserBlogs from './Components/UserBlogs/UserBlogs.jsx'
-
+import About from './Components/About/About.jsx'
 
 
 
@@ -49,9 +49,15 @@ const router = createBrowserRouter([
         </AuthLayout>)
       },
       {
-        path: 'signin',
+        path: '/signin',
         element: (<AuthLayout authentication={false}>
           <Signin />
+        </AuthLayout>)
+      },
+      {
+        path : '/about',
+        element: (<AuthLayout authentication={false}>
+          <About />
         </AuthLayout>)
       }
     ],
