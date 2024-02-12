@@ -14,7 +14,7 @@ import Signin from './Components/UserAuth/Signin.jsx'
 import Login from './Components/UserAuth/Login.jsx'
 import UserBlogs from './Components/UserBlogs/UserBlogs.jsx'
 import About from './Components/About/About.jsx'
-
+import ErrorPage from './Components/ErrorPage.jsx'
 
 
 
@@ -56,12 +56,14 @@ const router = createBrowserRouter([
       },
       {
         path : '/about',
-        element: (<AuthLayout authentication={false}>
-          <About />
-        </AuthLayout>)
+        element: <About/>
       }
     ],
-  }
+  },
+  {
+    path: '*',
+    element:<ErrorPage/>
+    },  
 ])
 
 

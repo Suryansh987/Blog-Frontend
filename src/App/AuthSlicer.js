@@ -1,7 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    logged : false
+    logged : false,
+    user : {
+        name:"",
+        email:"",
+        password:"",
+        avatar:"",
+        cover:""
+}
 }
 
 const AuthSlicer = createSlice({
@@ -13,6 +20,9 @@ const AuthSlicer = createSlice({
         },
         signin : (state,action) => {
             state.logged = true
+            state.user.name = action.payload.name,
+            state.user.email = action.payload.email,
+            state.user.password = action.payload.password
         },
         logout : (state,action) => {
             state.logged = false
