@@ -2,7 +2,8 @@ import React from 'react'
 
 const ErrorPage = () => {
   return (
-    <div>ErrorPage</div>
+    <div className='flex flex-col h-screen bg-[url("/Error404.png")] bg-center bg-contain'>
+      </div>
   )
 }
 

@@ -17,6 +17,7 @@ const AuthSlicer = createSlice({
     reducers: {
         login : (state, action) => {
             state.logged = true
+            
         },
         signin : (state,action) => {
             state.logged = true
