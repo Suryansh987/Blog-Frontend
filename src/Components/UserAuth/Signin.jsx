@@ -29,11 +29,11 @@ const Signin = () => {
     <>
     <div className='w-[80vw] m-auto mt-6 border-2 border-text-color p-6'>
       <form method='POST' onSubmit={handleSubmit}>
-        <input className='my-3 w-full py-3 px-3 rounded-xl outline-orange-300' type="text" name="name" id="name" placeholder='Enter your Name...' value={user.name} onChange={handleOnChange}/>
+        <input className='my-3 w-full py-3 px-3 rounded-xl outline-orange-300' type="text" name="name" id="name" placeholder='Enter your Name...' value={user.name} onChange={handleOnChange} required/>
         <br />
-        <input className='my-3 w-full py-3 px-3 rounded-xl outline-orange-300' type="text" name="email" id="email" placeholder='Enter Your Email...' value={user.email} onChange={handleOnChange}/>
+        <input className='my-3 w-full py-3 px-3 rounded-xl outline-orange-300' type="text" name="email" id="email" placeholder='Enter Your Email...' value={user.email} onChange={handleOnChange} required/>
         <br />
-        <input className='my-3 w-full py-3 px-3 rounded-xl outline-orange-300' type="text" name="password" id="password" placeholder='Enter your Password...' value={user.password} onChange={handleOnChange}/>
+        <input className='my-3 w-full py-3 px-3 rounded-xl outline-orange-300' type="text" name="password" id="password" placeholder='Enter your Password...' value={user.password} onChange={handleOnChange} required/>
         <br />
         <button className='my-3 py-3 rounded-xl w-full bg-text-color text-body-color shadow-md hover:shadow-orange-300' type="submit">Signin  </button>
       </form>

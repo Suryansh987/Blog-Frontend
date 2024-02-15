@@ -11,13 +11,25 @@ const initialState = {
 }
 }
 
+const url = process.env.REACT_APP_EXPRESS_APP
+
 const AuthSlicer = createSlice({
     name: "Auth",
     initialState,
     reducers: {
         login : (state, action) => {
-            state.logged = true
-            
+            const data = action.payload
+            fetch(`${url}/user/signin`, {
+                method: "POST", 
+                headers: {
+                //   "Content-Type": "application/json",
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: JSON.stringify(data), // body data type must match "Content-Type" header
+              })
+              .then(res => state.user=res.JSON())
+            }
+                        
         },
         signin : (state,action) => {
             state.logged = true
@@ -28,8 +40,7 @@ const AuthSlicer = createSlice({
         logout : (state,action) => {
             state.logged = false
         }
-    }
-})
+    })
 
 export const { login , signin, logout } = AuthSlicer.actions
 
