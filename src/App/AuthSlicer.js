@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+const url = import.meta.env.VITE_EXPRESS_URL
 const initialState = {
     logged : false,
     user : {
@@ -9,27 +9,35 @@ const initialState = {
         avatar:"",
         cover:""
 }
-}
+};
 
-const url = process.env.REACT_APP_EXPRESS_APP
 
 const AuthSlicer = createSlice({
     name: "Auth",
     initialState,
     reducers: {
-        login : (state, action) => {
-            const data = action.payload
-            fetch(`${url}/user/signin`, {
+        login : async(state, action) => {
+            const formdata = action.payload
+            const data = new URLSearchParams();
+            for(const key in formdata){
+                data.append(key,formdata[key])
+            }
+
+            const user = await fetch(`${url}/user/login`, {
                 method: "POST", 
                 headers: {
-                //   "Content-Type": "application/json",
                   'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: JSON.stringify(data), // body data type must match "Content-Type" header
+                body: data,
+                credentials: 'include'
               })
-              .then(res => state.user=res.JSON())
+              const userjson = await user.json()
+              console.log(userjson.sucess);
+
+            const cookies = user.headers;
+              console.log(cookies);
             }
-                        
+                      
         },
         signin : (state,action) => {
             state.logged = true
@@ -45,3 +53,4 @@ const AuthSlicer = createSlice({
 export const { login , signin, logout } = AuthSlicer.actions
 
 export default AuthSlicer.reducer
+
