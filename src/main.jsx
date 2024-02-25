@@ -15,7 +15,7 @@ import Login from './Components/UserAuth/Login.jsx'
 import UserBlogs from './Components/UserBlogs/UserBlogs.jsx'
 import About from './Components/About/About.jsx'
 import ErrorPage from './Components/ErrorPage.jsx'
-
+import Profile from './Components/UserAuth/profile.jsx'
 
 
 
@@ -27,7 +27,9 @@ const router = createBrowserRouter([
     children: [
       {
         path : "/",
-        element : <Home/>
+        element : (<AuthLayout authentication={true}>
+          <Home />
+        </AuthLayout>)
       },
       {
         path: "/blog",
@@ -57,6 +59,12 @@ const router = createBrowserRouter([
       {
         path : '/about',
         element: <About/>
+      },
+      {
+        path : '/profile',
+        element: (<AuthLayout authentication={true}>
+          <Profile />
+        </AuthLayout>)
       }
     ],
   },

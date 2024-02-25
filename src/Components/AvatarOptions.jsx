@@ -13,9 +13,8 @@ const AvatarOptions = (props) => {
   }
     const { isOpen } = props
     return (
-      <div className={`${authStatus===true?isOpen?"block":"hidden":"hidden"} flex flex-col w-52 h-fit bg-white text-center py-2 relative top-8 right-48 shadow-[2px 5px 11px 0 #879188] ${isOpen?"block":"hidden"}`}>
-          <Link to="/" className={`py-2 hover:bg-gray-200 px-3`}>Profile</Link>
-          <Link to="/" className={`py-2 hover:bg-gray-200 px-3`}>My Account</Link>
+      <div className={`${authStatus===true?isOpen?"block":"hidden":"hidden"} flex flex-col w-52 h-fit bg-white text-center py-2 relative top-8 right-48 shadow-[2px 5px 11px 0 #879188] ${isOpen?"block":"hidden"} z-10`}>
+          <Link to="/profile" className={`py-2 hover:bg-gray-200 px-3`}>Profile</Link>
           <Link to="/login" className={`py-2 hover:bg-gray-200 px-3`} onClick={handleLogout}>Logout</Link>
       </div>
     );

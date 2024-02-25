@@ -4,8 +4,8 @@ const url = import.meta.env.VITE_EXPRESS_URL
 const initialState = {
     logged: false,
     user: {
-        name: "",
-        email: "",
+        name: "Suryansh",
+        email: "abc@gmail.com",
         password: "",
         avatar: "",
         cover: ""
@@ -28,9 +28,24 @@ const userLogin = createAsyncThunk('auth/login', async (formdata) => {
         body: data,
         credentials: 'include',
     })
-    if (!user.ok) {
-        console.log("error");
+    const userjson = await user.json()
+    return userjson
+})
+
+const userSignin = createAsyncThunk('auth/sigin',async(userData)=>{
+    const data = new URLSearchParams();
+    for(const key in userData){
+        data.append(key,userData[key])
     }
+
+    const user = await fetch(`${url}/user/signin`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: data,
+        credentials: 'include',
+    })
     const userjson = await user.json()
     return userjson
 })
@@ -42,12 +57,25 @@ const AuthSlicer = createSlice({
     initialState,
     reducers:
     {
-
-        signin: (state, action) => {
-            state.logged = true
-            state.user.name = action.payload.name,
-                state.user.email = action.payload.email,
-                state.user.password = action.payload.password
+        login: (state,action)=>{
+            const { user, error } = action.payload
+            if(user){
+                state.logged = true
+                state.user=user
+            }
+            else if(error){
+                console.error(error);
+            }
+        },
+        signin: (state,action)=>{
+            const { user, error } = action.payload
+            if(user){
+                state.logged = true
+                state.user=user
+            }
+            else if(error){
+                console.error(error);
+            }
         },
         logout: (state, action) => {
             state.logged = false
@@ -57,6 +85,17 @@ const AuthSlicer = createSlice({
         builder.addCase(userLogin.fulfilled, (state, action) => {
             const { user, error } = action.payload
             if(user){
+                state.logged = true
+                state.user=user
+            }
+            else if(error){
+                console.error(error);
+            }
+        }),
+        builder.addCase(userSignin.fulfilled, (state,action)=>{
+            const { user, error } = action.payload
+            if(user){
+                state.logged = true
                 state.user=user
             }
             else if(error){
@@ -67,6 +106,5 @@ const AuthSlicer = createSlice({
 })
 
 export const { login, signin, logout } = AuthSlicer.actions
-export { userLogin }
 export default AuthSlicer.reducer
 
