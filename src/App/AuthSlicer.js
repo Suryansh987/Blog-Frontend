@@ -14,44 +14,6 @@ const initialState = {
 
 
 
-const userLogin = createAsyncThunk('auth/login', async (formdata) => {
-    const data = new URLSearchParams();
-    for (const key in formdata) {
-        data.append(key, formdata[key])
-    }
-
-    const user = await fetch(`${url}/user/login`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: data,
-        credentials: 'include',
-    })
-    const userjson = await user.json()
-    return userjson
-})
-
-const userSignin = createAsyncThunk('auth/sigin',async(userData)=>{
-    const data = new URLSearchParams();
-    for(const key in userData){
-        data.append(key,userData[key])
-    }
-
-    const user = await fetch(`${url}/user/signin`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: data,
-        credentials: 'include',
-    })
-    const userjson = await user.json()
-    return userjson
-})
-
-
-
 const AuthSlicer = createSlice({
     name: "Auth",
     initialState,
@@ -81,28 +43,6 @@ const AuthSlicer = createSlice({
             state.logged = false
         },
     },
-    extraReducers: (builder) => {
-        builder.addCase(userLogin.fulfilled, (state, action) => {
-            const { user, error } = action.payload
-            if(user){
-                state.logged = true
-                state.user=user
-            }
-            else if(error){
-                console.error(error);
-            }
-        }),
-        builder.addCase(userSignin.fulfilled, (state,action)=>{
-            const { user, error } = action.payload
-            if(user){
-                state.logged = true
-                state.user=user
-            }
-            else if(error){
-                console.error(error);
-            }
-        })
-    }
 })
 
 export const { login, signin, logout } = AuthSlicer.actions

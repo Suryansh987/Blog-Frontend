@@ -8,13 +8,23 @@ const url = import.meta.env.VITE_EXPRESS_URL
 
 
 const Login = () => {
+
+  const [useToast, setUseToast] = useState({
+    show:false,
+    message: ""
+  })
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting }
   } = useForm()
+
   const dispatch = useDispatch()
+
   const navigate = useNavigate()
+
   const handleLogin = async (formdata) => {
     const data = new URLSearchParams();
     for (const key in formdata) {
@@ -29,13 +39,19 @@ const Login = () => {
       body: data,
       credentials: 'include',
     })
+
     const userjson = await user.json()
+
     if(user.ok){
       dispatch(login(userjson))
       navigate('/')
     }
     else{
-      console.error(userjson.error);
+      setUseToast({
+        show:true,
+        message:userjson.error
+      })
+      reset()
     }
 
   }
@@ -87,6 +103,7 @@ const Login = () => {
             className='my-3 py-3 rounded-xl w-full bg-text-color text-body-color shadow-md hover:shadow-orange-300 disabled:shadow-none disabled:cursor-not-allowed' type="submit" disabled={isSubmitting?true:false} >
             {isSubmitting?"Logging...":"Login"}
           </button>
+          {useToast.show && <div className='text-red-500 text-md'>*{useToast.message}</div>}
         </form>
         <div className='text-lg text-center mt-5'>Don't have an account? Want to {" "}
           <Link className='text-blue-600 font-semibold hover:underline underline-offset-4' to='/signin'>Signin</Link>

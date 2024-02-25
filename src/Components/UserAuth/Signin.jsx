@@ -3,14 +3,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { signin } from '../../App/AuthSlicer'
 import { useForm } from 'react-hook-form'
+import Toast from '../Toast/Toast'
 const url = import.meta.env.VITE_EXPRESS_URL
 
 const Signin = () => {
 
+  const [useToast, setUseToast] = useState({
+    show:false,
+    message: ""
+  })
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    reset,
+    formState: { errors, isSubmitting, isSubmitSuccessful,isSubmitted }
   } = useForm()
 
   const dispatch = useDispatch()
@@ -37,7 +44,8 @@ const Signin = () => {
     navigate('/')
     }
     else{
-      console.error(userjson.error);
+      setUseToast({show:true, message:userjson.error})
+      reset()
     }
 
   }
@@ -105,7 +113,8 @@ const Signin = () => {
             />
           {errors.password && <div className='text-red-500 text-xs'>*{errors.password.message}</div>}
           <button className='my-3 py-3 rounded-xl w-full bg-text-color text-body-color shadow-md hover:shadow-orange-300 disabled:shadow-none disabled:cursor-not-allowed' type="submit" disabled={isSubmitting?true:false}>{isSubmitting?"Submitting....":"Signin"}</button>
-        </form>
+          {useToast.show && <div className='text-red-500 text-md'>*{useToast.message}</div>}
+        </form> 
         <div className='text-lg text-center mt-5'>Already have an account? Want to {" "}
           <Link className='text-blue-600 font-semibold hover:underline underline-offset-4' to='/login'>Login</Link>
         </div>
