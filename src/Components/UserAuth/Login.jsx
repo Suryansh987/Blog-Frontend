@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../../App/AuthSlicer'
 import { useForm } from 'react-hook-form'
+import { fetchBlogs } from '../../App/BlogSlicer'
+import { apiLogin } from '../../Auth/Fetcher'
+
 const url = import.meta.env.VITE_EXPRESS_URL
 
 
@@ -25,34 +28,21 @@ const Login = () => {
 
   const navigate = useNavigate()
 
-  const handleLogin = async (formdata) => {
-    const data = new URLSearchParams();
-    for (const key in formdata) {
-      data.append(key, formdata[key])
-    }
-
-    const user = await fetch(`${url}/user/login`, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: data,
-      credentials: 'include',
-    })
-
-    const userjson = await user.json()
-
-    if(user.ok){
-      dispatch(login(userjson))
-      navigate('/')
-    }
-    else{
+  const handleLogin = async (formData) => {
+    const userData = await apiLogin(formData)
+    const { user,error } = userData
+    if(error){
+      //TODO: Create Toast Component
       setUseToast({
         show:true,
-        message:userjson.error
+        message:error
       })
-      reset()
     }
+    else if(user){
+      dispatch(login(user))
+      dispatch(fetchBlogs())
+    }
+      reset()
 
   }
   return (

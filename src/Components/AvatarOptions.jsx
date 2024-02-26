@@ -2,12 +2,14 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../App/AuthSlicer';
+import { remove } from 'react-cookies'
 
 const AvatarOptions = (props) => {
   const navigate = useNavigate()
   const authStatus = useSelector(state=>state.auth.logged)
   const dispatch = useDispatch()
   const handleLogout = () => {
+    remove('token')
     dispatch(logout())
     navigate('/')
   }

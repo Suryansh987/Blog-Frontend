@@ -3,6 +3,7 @@ import HomeBlog from './HomeBlog'
 import Contact from './Contact'
 import HomeAbout from './HomeAbout'
 
+
 const Home = () => {
   return (
     <>

@@ -3,11 +3,12 @@ import '../index.css'
 import Drawer from './Drawer'
 import { Link } from 'react-router-dom'
 import AvatarOptions from './AvatarOptions'
+import { useSelector } from 'react-redux'
 
-const Navbar = (props) => {
+const Navbar = () => {
   const [MenuType, setMenuType] = useState("Menu")
- const [isOpen, setisOpen] = useState(false)
-  const { Avatar } = props
+  const [isOpen, setisOpen] = useState(false)
+  const Avatar = useSelector(state=>state.auth.user.avatar_url)
   return (
     <>
       <div className='flex sm:text-3xl text-xl justify-center items-center select-none'>
@@ -26,7 +27,7 @@ const Navbar = (props) => {
           <Link className='flex items-center text-text-color' to="/userblogs"><span className="material-symbols-outlined mr-2 text-text-color">history_edu</span>Blogs</Link>
           <Link className='flex items-center text-text-color' to="/about"><span className="material-symbols-outlined mr-2 text-text-color">diversity_3</span>About</Link>
         </ul>
-        <div style={{ backgroundImage: `url(${Avatar})`}} className="p-5 w-10 h-10 bg-contain bg-no-repeat rounded-full cursor-pointer" id='avatar' onClick={()=>(setisOpen(isOpen?false:true))}>
+        <div style={{ backgroundImage: `url(${Avatar?Avatar:"https://res.cloudinary.com/dybwlpu9u/image/upload/v1706519441/Avatar/h2w4cdnhxo5opzpnyydq.png"})`}} className="p-5 w-10 h-10 bg-cover bg-no-repeat rounded-full cursor-pointer bg-center" id='avatar' onClick={()=>(setisOpen(isOpen?false:true))}>
           <AvatarOptions isOpen={isOpen}/>
         </div>
         <span className="material-symbols-outlined sm:hidden block select-none" onClick={() => { setMenuType(MenuType === "Menu" ? "Sort" : "Menu") }}>

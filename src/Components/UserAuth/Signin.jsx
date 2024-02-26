@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { signin } from '../../App/AuthSlicer'
+import { login } from '../../App/AuthSlicer'
 import { useForm } from 'react-hook-form'
-import Toast from '../Toast/Toast'
+import { apiSignin } from '../../Auth/Fetcher'
 const url = import.meta.env.VITE_EXPRESS_URL
 
 const Signin = () => {
@@ -17,7 +17,7 @@ const Signin = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting, isSubmitSuccessful,isSubmitted }
+    formState: { errors, isSubmitting }
   } = useForm()
 
   const dispatch = useDispatch()
@@ -25,28 +25,21 @@ const Signin = () => {
   const navigate = useNavigate()
 
   const handleSignin = async (formData) => {
-    const data = new URLSearchParams();
-    for (const key in formData) {
-      data.append(key, formData[key])
+    const userData = await apiSignin(formData)
+    const { user,error } = userData
+    if(error){
+      //TODO: Create Toast Component
+      setUseToast({
+        show:true,
+        message:error
+      })
     }
-
-    const user = await fetch(`${url}/user/signin`, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: data,
-      credentials: 'include',
-    })
-    const userjson = await user.json()
-    if(user.ok){
-    dispatch(signin(userjson))
-    navigate('/')
+    else if(user){
+      dispatch(login(user))
+      dispatch(fetchBlogs())
+      navigate('/')
     }
-    else{
-      setUseToast({show:true, message:userjson.error})
-      reset()
-    }
+    reset()
 
   }
   return (
