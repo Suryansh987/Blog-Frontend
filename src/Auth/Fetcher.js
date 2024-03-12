@@ -8,6 +8,16 @@ const toUrlEncoded = (formData) => {
     return data
 }
 
+const toFormData = (formData) => {
+  const data = new FormData();
+  for (const key in formData){
+    if(key === thumbnail || key==='') continue;
+    data.append(key, formData[key])
+  }
+  data.append('thumbnail',formData.thumbnail[0])
+  return data
+}
+
 const cookieLogin = async(cookie) =>{
     const usercookie = document.cookie
         if(usercookie.includes('token=')){
@@ -50,4 +60,16 @@ const apiSignin = async (formData) => {
     return userData
 }
 
-export { cookieLogin, apiLogin, apiSignin }
+
+const postBlog = async(formData) => {
+  const data = toFormData(formData)
+  const res = await fetch(`${url}/blog/addblog`, {
+    method:'POST',
+    credentials:'include',
+    body:data
+  })
+  const blog = await res.json();
+  return blog;
+}
+
+export { cookieLogin, apiLogin, apiSignin, postBlog }

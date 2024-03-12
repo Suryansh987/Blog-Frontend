@@ -19,6 +19,7 @@ const AuthSlicer = createSlice({
         },
         logout: (state, action) => {
             state.logged = false
+            state.user = {}
         },
     },
 })

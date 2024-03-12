@@ -12,30 +12,65 @@ const AuthLayout = ({ children, authentication = true }) => {
   const dispatch = useDispatch()
 
 
+  const setUser = async () => {
+    const userData = await cookieLogin()
+    const { user,error } = userData
+    if(error){
+      navigate('/login')
+    }
+    else if(user){
+      dispatch(login(user))
+      dispatch(fetchBlogs())
+    }
+  }
 
   useEffect(() => {
-    if (authentication && authStatus !== authentication) {
+
+    if(authentication===false){
       if (document.cookie.includes('token=')) {
-        const setUser = async () => {
-          const userData = await cookieLogin()
-          const { user,error } = userData
-          if(error){
-            navigate('/login')
-          }
-          else if(user){
-            dispatch(login(user))
-            dispatch(fetchBlogs())
-          }
-        }
         setUser()
       }
-      else {
-        navigate('/login')
-      }
-    }
-    else if (!authentication && authStatus !== authentication) {
       navigate('/')
     }
+
+    if(authentication!==authStatus){
+      if(authentication===false){
+        if (document.cookie.includes('token=')) {
+          setUser()
+        }
+        navigate('/')
+      }
+      else{
+        if (document.cookie.includes('token=')) {
+          setUser()
+        }
+        else {
+          navigate('/login')
+        }
+      }
+    }
+    // if (authentication && authStatus !== authentication) {
+    //   if (document.cookie.includes('token=')) {
+    //     const setUser = async () => {
+    //       const userData = await cookieLogin()
+    //       const { user,error } = userData
+    //       if(error){
+    //         navigate('/login')
+    //       }
+    //       else if(user){
+    //         dispatch(login(user))
+    //         dispatch(fetchBlogs())
+    //       }
+    //     }
+    //     setUser()
+    //   }
+    //   else {
+    //     navigate('/login')
+    //   }
+    // }
+    // else if (!authentication && authStatus !== authentication) {
+    //   navigate('/')
+    // }
     setLoader(true)
   }, [authStatus, authentication, navigate])
 

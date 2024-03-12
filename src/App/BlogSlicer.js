@@ -2,16 +2,15 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 const url = import.meta.env.VITE_EXPRESS_URL
 
 const initialState = {
-    Blogs : []
-      
+    Blogs : []  
 }
 
 export const fetchBlogs = createAsyncThunk('fetchData', async()=>{
-  const res = await fetch(`${url}/blog/userblogs`,{credentials:'include'})
+  const res = await fetch(`${url}/blog/fetchall`,{credentials:'include'})
   const blogs = await res.json()
   return blogs
 })
-
+ 
 const BlogSlicer = createSlice({
     name: "Auth",
     initialState,
