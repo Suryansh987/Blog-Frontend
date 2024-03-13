@@ -23,8 +23,8 @@ const Navbar = () => {
       <nav className='flex w-[98vw] h-[55px] justify-between items-center text-xl px-8 select-none'>
         <ul className='sm:flex gap-10 hidden items-center font-Marmelad cursor-pointer'>
           <Link className='flex items-center text-text-color' to="/"><span className="material-symbols-outlined mr-2 text-text-color">Home</span>Home</Link>
-          <Link className='flex items-center text-text-color' to="/blog"><span className="material-symbols-outlined mr-2 text-text-color">post_add</span>Post</Link>
-          <Link className='flex items-center text-text-color' to="/userblogs"><span className="material-symbols-outlined mr-2 text-text-color">history_edu</span>Blogs</Link>
+          <Link className='flex items-center text-text-color' to="/post"><span className="material-symbols-outlined mr-2 text-text-color">post_add</span>Post</Link>
+          <Link className='flex items-center text-text-color' to="/blogs"><span className="material-symbols-outlined mr-2 text-text-color">history_edu</span>Blogs</Link>
           <Link className='flex items-center text-text-color' to="/about"><span className="material-symbols-outlined mr-2 text-text-color">diversity_3</span>About</Link>
         </ul>
         <div style={{ backgroundImage: `url(${Avatar?Avatar:"https://res.cloudinary.com/dybwlpu9u/image/upload/v1706519441/Avatar/h2w4cdnhxo5opzpnyydq.png"})`}} className="p-5 w-10 h-10 bg-cover bg-no-repeat rounded-full cursor-pointer bg-center" id='avatar' onClick={()=>(setisOpen(isOpen?false:true))}>

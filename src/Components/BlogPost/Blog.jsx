@@ -38,7 +38,7 @@ const Blog = () => {
             <span className='text-red-500 ml-2'>Choose Thumbnail *</span>
             <input className='my-2 w-full px-3 py-3 outline-orange-300' type="file" name="thumbnail" id="thumbnail" {...register('thumbnail')} />
             <textarea className='w-full px-3 my-2 py-2 outline-orange-300' name="blogText" id="blogText" cols="30" rows="10" {...register('description')}></textarea>
-            <button type="submit">Submit</button>
+            <button type="submit" className='my-3 py-3 rounded-xl w-full bg-text-color text-body-color shadow-md hover:shadow-orange-300 disabled:shadow-none disabled:cursor-not-allowed'>Submit</button>
           </form>
         </div>
         <div className='bg-body-color p-5'>
